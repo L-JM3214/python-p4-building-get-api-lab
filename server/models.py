@@ -23,6 +23,9 @@ class Bakery(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<Bakery {self.name}>'
 
+    def serialize(self):
+        return SerializerMixin.to_dict(self)
+
 class BakedGood(db.Model, SerializerMixin):
     __tablename__ = 'baked_goods'
 
@@ -38,3 +41,6 @@ class BakedGood(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'<Baked Good {self.name}, ${self.price}>'
+
+    def serialize(self):
+        return SerializerMixin.to_dict(self)
